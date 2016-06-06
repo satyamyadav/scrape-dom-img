@@ -6,13 +6,14 @@ prerequisites
 
 *	clone the repository and cd into the folder where it is cloned
 * run:   npm install
-* run :  npm start <url>
+* run :  npm start {url}
+
 
 scrape-dom-img :
 ======================================================================
 It can't scrape all the images of a site, It downloads the images loaded at url.
 
-It is to omit the manula right click and `save as` step of saving images from web pasges.
+It is to omit the manual right click and `save as` step of saving images from web pages.
 
 ### usages
 
