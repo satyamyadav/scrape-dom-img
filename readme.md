@@ -24,9 +24,10 @@ to download images of a url
 e.g.  `npm start https://www.lomography.com/photos/21236247`
 
 to download images of multiple urls if url contains number pattern at last e.g. /pages/23 ,
-then give a an integer as second parameter to scrape multiple urls.
+then give an integer as second parameter to scrape multiple urls.
 
 `npm start <url> <range>`  : range is integer
+
 now open `Downloads/nodescraper` , every batch of scraping is downloaded in a new folder.
 
 e.g. `npm start https://www.lomography.com/photos/21236247 5`
