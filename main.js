@@ -1,3 +1,4 @@
+'use strict';
 var request = require('request');
 var cheerio = require('cheerio');
 var exec = require('child_process').exec;
@@ -10,8 +11,8 @@ var d = new Date();
 
 exec("mkdir ~/Downloads/nodescraper");
 
-var extractDomain = function (url) {
-    var domain;
+const extractDomain =  (url) => {
+    let domain;
     if (url.indexOf("://") > -1) {
         domain = url.split('/')[2];
     }
@@ -23,28 +24,27 @@ var extractDomain = function (url) {
 }
 
 d = ['nodescraper', extractDomain(url), d.getTime()].join('_');
-var destination = "~/Downloads/nodescraper/" + d;
+const destination = "~/Downloads/nodescraper/" + d;
 exec("mkdir" + destination);
 
-var scrapeIt = function (url) {
+const scrapeIt = (url) => {
 
-  var scrape = function(links) {
+  const scrape = (links) => {
 
     console.log('downloading ... at ', destination);
 
-    links.forEach(function (link) {
-      var command =  ["wget", link, "-P " + destination].join(' ') ;
+    links.forEach((link) => {
+      let command =  ["wget", link, "-P " + destination].join(' ') ;
       exec(command);
-
     })
   }
 
-  request(url, function(error, response, html){
+  request(url, (error, response, html) => {
       if(!error){
-        var $ = cheerio.load(html);
-        var links = [];
-        $('img').filter(function(i){
-          var source = $('img')[i]['attribs']['src'];
+        const $ = cheerio.load(html);
+        const links = [];
+        $('img').filter((i) => {
+          let source = $('img')[i]['attribs']['src'];
           if (source.indexOf('http') < 0) {
             source = 'http:' + source;
           }
@@ -59,9 +59,9 @@ var scrapeIt = function (url) {
 
 
 if (range) {
-  var last = url.match(/([^\/]*)\/*$/)[1];
+  const last = url.match(/([^\/]*)\/*$/)[1];
   for (var i = 0; i < range; i++) {
-    var newUrl = url.split(last)[0] + (parseInt(last) + i);
+    let newUrl = url.split(last)[0] + (parseInt(last) + i);
     //console.log(newUrl);
     scrapeIt(newUrl);
   }
